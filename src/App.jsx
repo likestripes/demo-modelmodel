@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ModelModelWidget from 'modelmodel';
 
 function App() {
@@ -10,14 +10,17 @@ function App() {
     setInputValue(e.target.value);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (inputValue.trim() !== '') {
       setMessages([...messages, inputValue]);
       setInputValue('');
-      
-      setMessages([...messages, modelmodel.query(inputValue)]);
 
+      modelmodel.query(inputValue).then(
+        response => {
+          setMessages([...messages, response["details"]] );
+        }
+      )
     }
   };
   
