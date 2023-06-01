@@ -34,7 +34,7 @@ function App() {
           </span>
         </div>
  
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-auto overflow-y-auto">
           {messages.map((message, index) => (
             <div key={index} className="bg-gray-200 p-2 m-2 rounded-lg">
               {message}
